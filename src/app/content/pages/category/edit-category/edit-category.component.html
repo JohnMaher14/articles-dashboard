@@ -1,0 +1,68 @@
+<div class="card">
+
+  <div class="card-content collapse show">
+    <div class="card-body">
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+      <div *ngIf="success" class="alert alert-success" role="alert">
+        {{success}}
+      </div>
+      <form [formGroup]="updateCategory" (ngSubmit)="onUpdate()">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="title"> title</label>
+                <input id="title" class="form-control" type="text" name="title" formControlName="title" [ngModel]="category?.title">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="text"> Text</label>
+                <input id="text" class="form-control" type="text" name="text" formControlName="text" [ngModel]="category?.text">
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="category_status">Category status</label>
+                <select  class="form-control" id="category_status" name="category_status" [ngModel]="category?.category_status" formControlName="category_status">
+                  <option class="d-none" [selected]="category?.category_status">
+                    <ng-container  *ngIf="category?.category_status === 0">Show</ng-container>
+                    <ng-container *ngIf="category?.category_status === 1">Hide</ng-container>
+                  </option>
+                    <option value="0" >Hide</option>
+                    <option value="1" >Show</option>
+                </select>
+              </div>
+            </div>
+
+            <input type="hidden" name="banner_image" formControlName="banner_image" [ngModel]="category?.banner_image">
+            <div class="col-md-6">
+              <div class="row align-items-center">
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <input id="image"  (change)="banner_image($event)" class="form-control" type="file" name="image" >
+                  </div>
+
+                </div>
+                <div class="col-lg-2">
+                  <img height="50px" class="w-100" [src]="categoryImage+category?.banner_image" alt="">
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary" [disabled]="updateCategory.invalid">Save changes</button>
+      </form>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "action-loader.component.scss"
+    ],
+    "names": [],
+    "file": "action-loader.component.css"
+}

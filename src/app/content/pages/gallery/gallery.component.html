@@ -1,0 +1,107 @@
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<div class="" *ngIf="loadingAction">
+  <app-action-loader></app-action-loader>
+</div>
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header no-gutters row bg-primary">
+          <div class="col-md-9">
+            <h5>Gallery</h5>
+
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-light w-100" (click)="openModal(createModal)">Add gallery</button>
+          </div>
+        </div>
+        <div class="card-block row">
+          <div class="col-sm-12 col-lg-12 col-xl-12">
+            <div *ngIf="success" class="alert alert-success" role="alert">
+              {{ success }}
+            </div>
+            <div *ngIf="error" class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+            <div *ngIf="delete" class="alert alert-danger" role="alert">
+              {{ delete }}
+            </div>
+            <div class="table-responsive">
+              <table class="table" *ngIf="galleries.length > 0">
+                <thead class="table-primary">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Image</th>
+
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let gallery of galleries">
+                    <td scope="row">{{gallery.id}}</td>
+                    <td><img width="100px" [src]="galleryImage+gallery.image" alt=""></td>
+
+                    <td class=" d-flex justify-content-start">
+                      <a
+                        routerLink="/gallery/edit/{{ gallery.id }}"
+                        class="btn btn-pill btn-info btn-air-info btn-air-info mr-1"
+                        ><i class="fa fa-edit"></i
+                      ></a>
+
+                      <button
+                        (click)="onDelete(gallery.id, gallery.id)"
+                        class="btn btn-pill btn-danger btn-air-danger btn-air-danger"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+
+                    </td>
+
+                  </tr>
+
+                </tbody>
+              </table>
+              <div class="text-center py-3" *ngIf="galleries.length < 1">
+                <h4>There is no data yet </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+ <ng-template #createModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Create Gallery</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createGallery" (ngSubmit)="onCreateModal()">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input id="image" class="form-control" type="file" name="image" (change)="image($event)">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="createGallery.invalid">Save changes</button>
+      </div>
+  </form>
+  </div>
+</ng-template>

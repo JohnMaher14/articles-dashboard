@@ -1,0 +1,82 @@
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<div class="" *ngIf="loadingAction">
+  <app-action-loader></app-action-loader>
+</div>
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header no-gutters row bg-primary">
+          <div class="col-md-9">
+            <h5>Messages</h5>
+
+          </div>
+
+        </div>
+        <div class="card-block row">
+          <div class="col-sm-12 col-lg-12 col-xl-12">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered dom-jQuery-events" *ngIf="messages.length > 1">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Date</th>
+                        <th>Message</th>
+                        <th>View</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let message of messages">
+                        <td>{{message.id}}</td>
+                        <td>{{message.name }}</td>
+                        <td >{{message.phone}}</td>
+                        <td style="min-width: 137px;">
+                          {{ message.created_at | date: "medium" }}
+                        </td>
+                        <td >{{message.message | slice:0:70 }}
+                          <ng-container *ngIf="message.message.length > 70">
+
+                            ...
+                          </ng-container>
+                         </td>
+                        <!-- <td>{{message.message}}</td> -->
+                        <td class="text-truncate">
+                          <button
+                            type="button"
+                            [attr.data-toggle]="'modal'"
+                            [attr.data-target]="'#messageModal' + message.id"
+                            class="btn btn-primary text-white"
+                          >
+                            <i class="la la-search" aria-hidden="true"></i>
+                          </button>
+                        </td>
+
+                    </tr>
+
+
+
+                </tbody>
+
+              </table>
+              <div class="text-center py-4" *ngIf="messages.length < 1">
+                <h4>There is no messages yet</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

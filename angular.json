@@ -31,17 +31,38 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss",
+              "src/assets/css/vendors/icofont.css",
+              "src/assets/css/vendors/themify.css",
+              "src/assets/css/vendors/flag-icon.css",
+              "src/assets/css/vendors/feather-icon.css",
+              "src/assets/css/vendors/scrollbar.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/assets/css/vendors/bootstrap.css",
+              "src/assets/css/color-1.css",
+              "src/assets/css/responsive.css",
+              "src/assets/css/style.css",
+              "src/styles.scss",
+              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "src/assets/js/bootstrap/bootstrap.bundle.min.js",
+              "src/assets/js/config.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.min.js",
+              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -103,6 +124,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

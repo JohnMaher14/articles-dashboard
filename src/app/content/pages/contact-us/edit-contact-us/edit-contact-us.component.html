@@ -1,0 +1,157 @@
+
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+  <div class="card">
+
+    <div class="card-content collapse show">
+      <div class="card-body">
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+          <div *ngIf="success" class="alert alert-success" role="alert">
+            {{success}}
+          </div>
+          <form
+            class="form-horizontal"
+            (ngSubmit)="onSubmit()"
+            [formGroup]="contactUsEdit"
+          >
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Email</label>
+                  <input
+                    type="text"
+                    formControlName="email"
+                    id="email"
+                    class="form-control"
+                    [ngModel]="contactUsData?.email"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Location</label>
+                  <input
+                    type="text"
+                    formControlName="location"
+                    id="location"
+                    class="form-control"
+                    [ngModel]="contactUsData?.location"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Address</label>
+                  <input
+                    type="text"
+                    formControlName="address"
+                    id="address"
+                    class="form-control"
+                    [ngModel]="contactUsData.address"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Phone</label>
+                  <input
+                    type="text"
+                    formControlName="phone"
+                    id="phone"
+                    class="form-control"
+                    [ngModel]="contactUsData.phone"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Facebook</label>
+                  <input
+                    type="text"
+                    formControlName="facebook"
+                    id="facebook"
+                    class="form-control"
+                    [ngModel]="contactUsData.facebook"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Twitter</label>
+                  <input
+                    type="text"
+                    formControlName="twitter"
+                    id="twitter"
+                    class="form-control"
+                    [ngModel]="contactUsData.twitter"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Instagram</label>
+                  <input
+                    type="text"
+                    formControlName="instagram"
+                    id="instagram"
+                    class="form-control"
+                    [ngModel]="contactUsData.instagram"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Map link</label>
+                  <input
+                    type="text"
+                    formControlName="map_link"
+                    id="map_link"
+                    class="form-control"
+                    [ngModel]="contactUsData.map_link"
+
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group is-filled">
+                  <div class="row align-items-end">
+                    <div class="col-md-9">
+                      <label class="bmd-label-floating">Banner image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="mission_vision_image"
+                    (change)="banner_image($event)"
+
+                  />
+
+                    </div>
+                    <div class="col-md-3">
+                      <img [src]="aboutLink+contactUsData.banner_image" height="50px" class="w-100" alt="">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="row no-gutters justify-content-end">
+              <button class="btn btn-primary" [disabled]="contactUsEdit.invalid">
+                Edit about us
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>

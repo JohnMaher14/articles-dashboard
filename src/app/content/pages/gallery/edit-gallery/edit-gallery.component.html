@@ -1,0 +1,44 @@
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<div class="" *ngIf="loadingAction">
+  <app-action-loader></app-action-loader>
+</div>
+<div class="card">
+
+  <div class="card-content collapse show">
+    <div class="card-body">
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+      <div *ngIf="success" class="alert alert-success" role="alert">
+        {{success}}
+      </div>
+      <form [formGroup]="updateGallery" (ngSubmit)="onUpdate()">
+        <div class="modal-body">
+          <div class="row">
+
+            <input type="hidden" name="image" formControlName="image" [ngModel]="gallery?.image">
+            <div class="col-md-12">
+              <div class="row align-items-center">
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <input id="image"  (change)="image($event)" class="form-control" type="file" name="image" >
+                  </div>
+
+                </div>
+                <div class="col-lg-2">
+                  <img height="50px" class="w-100" [src]="galleryImage+gallery?.image" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary" [disabled]="updateGallery.invalid">Save changes</button>
+      </form>
+    </div>
+  </div>
+  </div>

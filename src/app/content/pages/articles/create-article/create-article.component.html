@@ -1,0 +1,108 @@
+<div class="card">
+
+  <div class="card-content collapse show">
+    <div class="card-body">
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+      <div *ngIf="success" class="alert alert-success row" role="alert">
+        <div class="col-md-6">
+          <p>{{success}}</p>
+
+        </div>
+
+      </div>
+      <form [formGroup]="createArticle" (ngSubmit)="onCreateModal(createArticle)">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-9">
+
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input id="title" class="form-control" type="text" name="title" formControlName="title">
+              </div>
+              <div *ngIf="createArticle.controls['title'].touched && createArticle.controls['title'].errors != null"
+                id="email" class="alert mt-2 alert-danger" role="alert">
+                <p class="mb-0" *ngIf="createArticle.controls['title'].errors['required']">Title is required</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="row">
+                <div class="col-md-6">
+
+                  <label class="col-form-label">Trending</label>
+                  <div class="media">
+                    <div class="media-body">
+                      <label class="switch">
+                        <input type="checkbox" (change)="onChangeTrend($event)" formControlName="trend_status"><span
+                          class="switch-state"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+
+                  <label class="col-form-label">Post status</label>
+                  <div class="media">
+                    <div class="media-body">
+                      <label class="switch">
+                        <input type="checkbox" (change)="onChangePost($event)" value="1"
+                          formControlName="post_status"><span class="switch-state"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="image">Image</label>
+                <input id="image" (change)="main_image($event)" class="form-control" type="file" name="image"
+                  formControlName="main_image">
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="category_id">Category</label>
+                <select id="category_id" class="form-control" name="category_id" formControlName="category_id">
+                  <option value="">Select category</option>
+
+                  <option value="{{category.id}}" *ngFor="let category of categories">{{category.title}}</option>
+                </select>
+              </div>
+              <div
+                *ngIf="createArticle.controls['category_id'].touched && createArticle.controls['category_id'].errors != null"
+                id="category_id" class="alert mt-2 alert-danger" role="alert">
+                <p class="mb-0" *ngIf="createArticle.controls['category_id'].errors['required']">Category is required
+                </p>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="description">Description</label>
+                <!-- <textarea id="description" class="form-control" type="text" name="text" formControlName="text"></textarea> -->
+                <ckeditor
+                [(ngModel)]="ckeditorContent"
+                [config]="ckeConfig"
+
+                formControlName="text"
+                ></ckeditor>
+
+              </div>
+              <div *ngIf="createArticle.controls['text'].touched && createArticle.controls['text'].errors != null"
+                id="description" class="alert mt-2 alert-danger" role="alert">
+                <p class="mb-0" *ngIf="createArticle.controls['text'].errors['required']">Description is required</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="createArticle.invalid">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

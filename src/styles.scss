@@ -1,1 +1,239 @@
 /* You can add global styles to this file, and also import other style files */
+$mainColor: #d17c78;
+$secondaryColor: #040254;
+.ml-0{
+  margin-left: 0 !important;
+}
+.pl-0{
+  padding-left: 0 !important;
+}
+.mr-1{
+  margin-right: 10px;
+}
+.mr-2{
+  margin-right: 15px;
+}
+.mr-3{
+  margin-right: 20px;
+}
+.mr-4{
+  margin-right: 30px;
+}
+.ml-1{
+  margin-left: 10px;
+}
+.ml-2{
+  margin-left: 15px;
+}
+.ml-3{
+  margin-left: 20px;
+}
+.ml-4{
+  margin-left: 30px;
+}
+.form-group{
+  margin-bottom: 15px;
+}
+// arrows
+//  main stylecheet
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.simplebar-content{
+  height: 100% !important;
+  padding-bottom: 150px !important;
+  &-wrapper{
+    height: unset !important;
+  }
+}
+.cke_bottom {
+  display: none !important;
+}
+select.form-control{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+}
+.table {
+  td{
+    display: table-cell !important;
+    vertical-align: middle;
+  }
+}
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999999999;
+  background: #290707;
+}
+.loader .loader-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
+.main-logo-loader {
+
+
+  animation: flip-vertical-left 1s ease-in-out infinite alternate-reverse both;
+}
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #290707;
+}
+.preloader .loader-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
+
+.preloader .main-loader {
+
+
+  animation: flip-vertical-left 1s ease-in-out infinite alternate-reverse both;
+}
+.fullsizeModal{
+  max-width:100%;
+  margin: 0 !important;
+  max-height:100%;
+
+}
+body.vertical-layout.vertical-menu-modern .content{
+  position:relative;
+}
+.loading{
+  &_data{
+    position: absolute;
+    inset:0;
+    background-color: #f4f5fa;
+    z-index:800;
+
+    .lds-ring {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      width: 80px;
+      height: 80px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .lds-ring div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border: 8px solid $mainColor;
+      border-radius: 50%;
+      animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: $mainColor transparent transparent transparent;
+    }
+    .lds-ring div:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+    .lds-ring div:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+    .lds-ring div:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+
+  }
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.ngx-pagination{
+  padding-left:0;
+  .current{
+    background-color: $mainColor !important
+  }
+  a:hover{
+    color: $mainColor
+  }
+}
+footer{
+  a{
+    color: $secondaryColor !important
+  }
+}
+.notfound{
+  min-height:75vh;
+}
+
+
+@-webkit-keyframes flip-vertical-left {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes flip-vertical-left {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
+.login-card{
+  background-color: transparent;
+  min-height: unset;
+  height: unset;
+}
+.header-wrapper{
+  min-height: 50px;
+}
+body.close_icon{
+  .page-wrapper.compact-wrapper .page-header{
+   margin-left: 0;
+   width: 100%;
+   padding-left: 0;
+    margin-left: auto;
+    width: calc(100% - 0px);
+    -webkit-transition: .5s;
+    transition: .5s;
+ }
+ .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper{
+  margin-left: -330px;
+  display: none;
+
+ }
+ .page-wrapper.compact-wrapper .page-body-wrapper .page-body{
+  margin-left: 0;
+
+ }
+ .page-wrapper.compact-wrapper .page-body-wrapper .page-body .footer{
+  padding-left: 0;
+
+ }
+}

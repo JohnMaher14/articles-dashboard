@@ -1,0 +1,327 @@
+
+  <div class="card">
+
+    <div class="card-content collapse show">
+      <div class="card-body">
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            {{error}}
+          </div>
+          <div *ngIf="success" class="alert alert-success" role="alert">
+            {{success}}
+          </div>
+          <form
+            class="form-horizontal"
+            (ngSubmit)="onSubmit()"
+            [formGroup]="aboutusEdit"
+          >
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">About section title</label>
+                  <input
+                    type="text"
+                    formControlName="about_section_title"
+                    id="en_about_section_title"
+                    class="form-control"
+                    [ngModel]="aboutUsData?.about_section_title"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">About section text</label>
+                  <input
+                    type="text"
+                    formControlName="about_section_text"
+                    id="about_section_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData?.about_section_text"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">First media title</label>
+                  <input
+                    type="text"
+                    formControlName="first_media_title"
+                    id="first_media_title"
+                    class="form-control"
+                    [ngModel]="aboutUsData.first_media_title"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Second media title</label>
+                  <input
+                    type="text"
+                    formControlName="second_media_title"
+                    id="second_media_title"
+                    class="form-control"
+                    [ngModel]="aboutUsData.second_media_title"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Third media text</label>
+                  <input
+                    type="text"
+                    formControlName="third_media_text"
+                    id="third_media_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.third_media_text"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According first title</label>
+                  <input
+                    type="text"
+                    formControlName="according_first_title"
+                    id="according_first_title"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_first_title"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According second title</label>
+                  <input
+                    type="text"
+                    formControlName="according_second_title"
+                    id="according_second_title"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_second_title"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According third title</label>
+                  <input
+                    type="text"
+                    formControlName="according_third_title"
+                    id="according_third_title"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_third_title"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According fourth title</label>
+                  <input
+                    type="text"
+                    formControlName="according_fourth_title"
+                    id="according_fourth_title"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_fourth_title"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According fivth title</label>
+                  <input
+                    type="text"
+                    formControlName="according_fivth_title"
+                    id="according_fivth_title"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_fivth_title"
+
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">First media text</label>
+                  <textarea
+                    type="text"
+                    formControlName="first_media_text"
+                    id="first_media_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.first_media_text"
+
+                  >{{ aboutUsData.first_media_text }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Second media text</label>
+                  <textarea
+                    type="text"
+                    formControlName="second_media_text"
+                    id="second_media_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.second_media_text"
+
+                  >{{ aboutUsData.second_media_text }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">Third media text</label>
+                  <textarea
+                    type="text"
+                    formControlName="third_media_text"
+                    id="third_media_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.third_media_text"
+
+                  >{{ aboutUsData.third_media_text }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According first text</label>
+                  <textarea
+                    type="text"
+                    formControlName="according_first_text"
+                    id="according_first_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_first_text"
+
+                  >{{ aboutUsData.according_first_text }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According second text</label>
+                  <textarea
+                    type="text"
+                    formControlName="according_second_text"
+                    id="according_second_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_second_text"
+
+                  >{{ aboutUsData.according_second_text }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According third text</label>
+                  <textarea
+                    type="text"
+                    formControlName="according_third_text"
+                    id="according_third_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_third_text"
+
+                  >{{ aboutUsData.according_third_text }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According fourth text</label>
+                  <textarea
+                    type="text"
+                    formControlName="according_fourth_text"
+                    id="according_fourth_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_fourth_text"
+
+                  >{{ aboutUsData.according_fourth_text }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label class="bmd-label-floating">According fivth text</label>
+                  <textarea
+                    type="text"
+                    formControlName="according_fivth_text"
+                    id="according_fivth_text"
+                    class="form-control"
+                    [ngModel]="aboutUsData.according_fivth_text"
+
+                  >{{ aboutUsData.according_fivth_text }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+
+                <div class="form-group bmd-form-group is-filled">
+                  <div class="row align-items-end">
+                    <div class="col-md-9">
+                      <label class="bmd-label-floating">About banner image</label>
+                      <input
+                      (change)="about_banner_image($event)"
+                        type="file"
+                        class="form-control"
+                        id="about_banner_image"
+
+                      />
+
+                    </div>
+                    <div class="col-md-3">
+                      <img [src]="aboutLink+aboutUsData.about_banner_image" height="50px" class="w-100" alt="">
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group is-filled">
+                  <div class="row align-items-end">
+                    <div class="col-md-9">
+                      <label class="bmd-label-floating">About section image</label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="about_section_image"
+                        (change)="about_section_image($event)"
+
+                      />
+
+                    </div>
+                    <div class="col-md-3">
+                      <img [src]="aboutLink+aboutUsData.about_section_image" height="50px" class="w-100" alt="">
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group is-filled">
+                  <div class="row align-items-end">
+                    <div class="col-md-9">
+                      <label class="bmd-label-floating">Mission vision image</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="mission_vision_image"
+                    (change)="according_image($event)"
+
+                  />
+
+                    </div>
+                    <div class="col-md-3">
+                      <img [src]="aboutLink+aboutUsData.according_image" height="50px" class="w-100" alt="">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="row no-gutters justify-content-end">
+              <button class="btn btn-primary" [disabled]="aboutusEdit.invalid">
+                Edit about us
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>

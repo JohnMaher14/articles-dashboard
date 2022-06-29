@@ -1,0 +1,148 @@
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<div class="" *ngIf="loadingAction">
+  <app-action-loader></app-action-loader>
+</div>
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header no-gutters row bg-primary">
+          <div class="col-md-9">
+            <h5>Categories</h5>
+
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-light w-100" (click)="openModal(createModal)">Add Category</button>
+          </div>
+        </div>
+        <div class="card-block row">
+          <div class="col-sm-12 col-lg-12 col-xl-12">
+            <div *ngIf="success" class="alert alert-success" role="alert">
+              {{ success }}
+            </div>
+            <div *ngIf="error" class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+            <div *ngIf="delete" class="alert alert-danger" role="alert">
+              {{ delete }}
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="table-primary">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let category of categories">
+                    <td scope="row">{{category.id}}</td>
+                    <td>{{category.title}}</td>
+                    <td>{{category.text}}</td>
+                    <td><img width="50px" height="50px" [src]="categoryImage+category.banner_image" alt=""></td>
+                    <td *ngIf="category.category_status == 0"><i class="text-danger fa fa-circle"></i></td>
+                    <td *ngIf="category.category_status == 1"><i class="text-success fa fa-circle"></i></td>
+                    <td class=" d-flex justify-content-start">
+                      <a
+                        routerLink="/category/{{ category?.id }}"
+                        class="btn btn-pill btn-info btn-air-info btn-air-info mr-1"
+                        ><i class="fa fa-edit"></i
+                      ></a>
+
+                      <button *ngIf="category.category_status == 1"
+                        (click)="onDelete(category.id, category.category_status)"
+                        class="btn btn-pill btn-danger btn-air-danger btn-air-danger mr-1"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                      <button *ngIf="category.category_status == 0"
+                        (click)="onEnable(category.id, category.category_status)"
+                        class="btn btn-pill btn-success btn-air-success btn-air-success mr-1"
+                      >
+                        <i class="fa fa-check"></i>
+                      </button>
+                    </td>
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<ng-template #createModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Create category</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createCategory" (ngSubmit)="onCreateModal()">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label for="name">Title</label>
+              <input id="name" class="form-control" type="text" name="title" formControlName="title">
+            </div>
+            <div *ngIf="createCategory.controls['title'].touched && createCategory.controls['title'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
+              <p class="mb-0" *ngIf="createCategory.controls['title'].errors['required']">Name is required</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label for="text">Description</label>
+              <input id="text" class="form-control" type="text" name="text" formControlName="text">
+            </div>
+            <div *ngIf="createCategory.controls['text'].touched && createCategory.controls['text'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
+              <p class="mb-0" *ngIf="createCategory.controls['text'].errors['required']">Description is required</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label for="image">banner image</label>
+              <input id="image" class="form-control" type="file" name="image" (change)="banner_image($event)">
+            </div>
+          </div>
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label for="category_status">Category status</label>
+              <select  class="form-control" id="category_status" name="category_status" formControlName="category_status">
+                <option value="">Select status</option>
+                <option value="0">Hide</option>
+                <option value="1">Show</option>
+              </select>
+            </div>
+            <div *ngIf="createCategory.controls['category_status'].touched && createCategory.controls['category_status'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
+              <p class="mb-0" *ngIf="createCategory.controls['category_status'].errors['required']">Status is required</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="createCategory.invalid">Save changes</button>
+      </div>
+  </form>
+  </div>
+</ng-template>

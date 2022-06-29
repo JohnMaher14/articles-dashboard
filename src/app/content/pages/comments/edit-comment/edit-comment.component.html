@@ -1,0 +1,62 @@
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<div class="" *ngIf="loadingAction">
+  <app-action-loader></app-action-loader>
+</div>
+<div class="card">
+
+  <div class="card-content collapse show">
+    <div class="card-body">
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+      <div *ngIf="success" class="alert alert-success" role="alert">
+        {{success}}
+      </div>
+      <form [formGroup]="updateComment" (ngSubmit)="onUpdate()">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="title"> title</label>
+                <input id="title" class="form-control" type="text" name="title" formControlName="title" [ngModel]="comment?.title">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="text"> Text</label>
+                <input id="text" class="form-control" type="text" name="text" formControlName="text" [ngModel]="comment?.text">
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="comment_status">comment status</label>
+                <select  class="form-control" id="comment_status" name="comment_status" [ngModel]="comment?.comment_status" formControlName="comment_status">
+                  <option class="d-none" [selected]="comment?.comment_status">
+                    <ng-container  *ngIf="comment?.comment_status === 0">Show</ng-container>
+                    <ng-container *ngIf="comment?.comment_status === 1">Hide</ng-container>
+                  </option>
+                    <option value="0" >Hide</option>
+                    <option value="1" >Show</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+
+
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary" [disabled]="updateComment.invalid">Save changes</button>
+      </form>
+    </div>
+  </div>
+  </div>

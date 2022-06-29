@@ -1,0 +1,18 @@
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group .input-group .invalid-tooltip {
+  position: absolute;
+  top: 86%;
+  display: block;
+  right: 10px;
+  z-index: 5;
+  max-width: 100%;
+  padding: 0.25rem 0.5rem;
+  font-size: .875rem;
+  color: #fff;
+  background-color: rgba(220, 53, 69, 0.9);
+  border-radius: 0.25rem;
+}
+/*# sourceMappingURL=auth.component.css.map */

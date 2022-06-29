@@ -1,0 +1,73 @@
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<div class="" *ngIf="loadingAction">
+  <app-action-loader></app-action-loader>
+</div>
+<div class="card">
+
+  <div class="card-content collapse show">
+    <div class="card-body">
+      <div *ngIf="success" class="alert alert-success" role="alert">
+        {{ success }}
+      </div>
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
+      <form [formGroup]="updateAdmin" (ngSubmit)="onUpdate()">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" class="form-control" type="text" name="title" formControlName="name" [ngModel]="admin?.name">
+              </div>
+              <div *ngIf="updateAdmin.controls['name'].touched && updateAdmin.controls['name'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
+                <p class="mb-0" *ngIf="updateAdmin.controls['name'].errors['required']">Name is required</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="name">Email</label>
+                <input id="name" class="form-control" type="text" name="title" formControlName="email" [ngModel]="admin?.email">
+              </div>
+              <div *ngIf="updateAdmin.controls['email'].touched && updateAdmin.controls['email'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
+                <p class="mb-0" *ngIf="updateAdmin.controls['email'].errors['required']">Email is required</p>
+                <p class="mb-0" *ngIf="updateAdmin.controls['email'].errors['email']">Email is invalid</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="text">Role</label>
+                <input id="text" class="form-control" type="text" name="text" formControlName="role" [ngModel]="admin?.role">
+              </div>
+              <div *ngIf="updateAdmin.controls['role'].touched && updateAdmin.controls['role'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
+                <p class="mb-0" *ngIf="updateAdmin.controls['role'].errors['required']">Role is required</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input id="phone" class="form-control" type="number" name="text" formControlName="phone" [ngModel]="admin?.phone">
+              </div>
+              <div *ngIf="updateAdmin.controls['phone'].touched && updateAdmin.controls['phone'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
+                <p class="mb-0" *ngIf="updateAdmin.controls['phone'].errors['required']">Phone is required</p>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="updateAdmin.invalid">Save changes</button>
+        </div>
+    </form>
+    </div>
+  </div>
+  </div>

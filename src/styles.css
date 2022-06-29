@@ -1,0 +1,263 @@
+/* You can add global styles to this file, and also import other style files */
+.ml-0 {
+  margin-left: 0 !important;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.mr-1 {
+  margin-right: 10px;
+}
+
+.mr-2 {
+  margin-right: 15px;
+}
+
+.mr-3 {
+  margin-right: 20px;
+}
+
+.mr-4 {
+  margin-right: 30px;
+}
+
+.ml-1 {
+  margin-left: 10px;
+}
+
+.ml-2 {
+  margin-left: 15px;
+}
+
+.ml-3 {
+  margin-left: 20px;
+}
+
+.ml-4 {
+  margin-left: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.simplebar-content {
+  height: 100% !important;
+  padding-bottom: 150px !important;
+}
+
+.simplebar-content-wrapper {
+  height: unset !important;
+}
+
+.table td {
+  display: table-cell !important;
+  vertical-align: middle;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999999999;
+  background: #290707;
+}
+
+.loader .loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.main-logo-loader {
+  animation: flip-vertical-left 1s ease-in-out infinite alternate-reverse both;
+}
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #290707;
+}
+
+.preloader .loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.preloader .main-loader {
+  animation: flip-vertical-left 1s ease-in-out infinite alternate-reverse both;
+}
+
+.fullsizeModal {
+  max-width: 100%;
+  margin: 0 !important;
+  max-height: 100%;
+}
+
+body.vertical-layout.vertical-menu-modern .content {
+  position: relative;
+}
+
+.loading_data {
+  position: absolute;
+  inset: 0;
+  background-color: #f4f5fa;
+  z-index: 800;
+}
+
+.loading_data .lds-ring {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  width: 80px;
+  height: 80px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.loading_data .lds-ring div {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #d17c78;
+  border-radius: 50%;
+  -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #d17c78 transparent transparent transparent;
+}
+
+.loading_data .lds-ring div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+          animation-delay: -0.45s;
+}
+
+.loading_data .lds-ring div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+
+.loading_data .lds-ring div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
+}
+
+@-webkit-keyframes lds-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.ngx-pagination {
+  padding-left: 0;
+}
+
+.ngx-pagination .current {
+  background-color: #d17c78 !important;
+}
+
+.ngx-pagination a:hover {
+  color: #d17c78;
+}
+
+footer a {
+  color: #040254 !important;
+}
+
+.notfound {
+  min-height: 75vh;
+}
+
+@-webkit-keyframes flip-vertical-left {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes flip-vertical-left {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+  }
+}
+
+.login-card {
+  background-color: transparent;
+  min-height: unset;
+  height: unset;
+}
+
+.header-wrapper {
+  min-height: 50px;
+}
+
+body.close_icon .page-wrapper.compact-wrapper .page-header {
+  margin-left: 0;
+  width: 100%;
+  padding-left: 0;
+  margin-left: auto;
+  width: calc(100% - 0px);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+body.close_icon .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper {
+  margin-left: -330px;
+  display: none;
+}
+
+body.close_icon .page-wrapper.compact-wrapper .page-body-wrapper .page-body {
+  margin-left: 0;
+}
+
+body.close_icon .page-wrapper.compact-wrapper .page-body-wrapper .page-body .footer {
+  padding-left: 0;
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,53 @@
+
+<div class="" *ngIf="actionLoader">
+  <app-action-loader></app-action-loader>
+</div>
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-12">
+      <div class="login-card">
+        <form class="theme-form login-form" [formGroup]="auth" (ngSubmit)="submit(auth)">
+          <h4>Login</h4>
+          <h6>Welcome back! Log in to your account.</h6>
+          <div class="form-group">
+            <label>Email Address</label>
+            <div class="input-group"><span class="input-group-text"><i class="fa fa-envelope"></i></span>
+              <input class="form-control" type="email" required="" formControlName="email" placeholder="Test@gmail.com">
+              <div *ngIf="auth.controls['email'].touched && auth.controls['email'].errors != null" class="invalid-tooltip">
+                <ng-container *ngIf="auth.controls['email'].errors['required']">
+
+                  Please enter proper email.
+                </ng-container>
+                <ng-container *ngIf="auth.controls['email'].errors['email']">
+
+                  Please valid email
+                </ng-container>
+
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class="input-group"><span class="input-group-text"><i class="fa fa-lock"></i></span>
+              <input class="form-control" type="password" formControlName="password" name="auth[password]" required="" placeholder="*********">
+              <div *ngIf="auth.controls['password'].touched && auth.controls['password'].errors != null" class="invalid-tooltip">
+                <ng-container *ngIf="auth.controls['password'].errors['required']">
+                  Password field required
+                </ng-container>
+
+
+              </div>
+            </div>
+          </div>
+          <div *ngIf="error" class="alert alert-danger" role="alert">
+            <strong>{{error}}</strong>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" [disabled]="auth.invalid" type="submit">Sign in</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header no-gutters row bg-primary">
+          <div class="col-md-12">
+            <h5>About us</h5>
+
+          </div>
+
+        </div>
+        <div class="card-block row">
+          <div class="col-sm-12 col-lg-12 col-xl-12">
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="table-primary">
+                  <tr>
+                    <th>id</th>
+                    <th >About page banner</th>
+                    <th >Section image</th>
+                    <th>Section Title</th>
+                    <th>Section Text</th>
+
+
+                    <th style="width: 0;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <td>1</td>
+                    <td><img [src]="aboutUsImage+AboutUs?.about_banner_image" height="40px" width="60px" alt=""></td>
+                    <td ><img [src]="aboutUsImage+AboutUs?.about_section_image" height="40px" width="60px" alt=""></td>
+                    <td>{{AboutUs?.about_section_title}}</td>
+                    <td>{{AboutUs?.about_section_text}}</td>
+
+                    <td >
+                        <a routerLink="/about-us/edit/{{AboutUs?.id}}" class="btn btn-round mr-1 btn-success"><i class="fa fa-edit"></i></a>
+                    </td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

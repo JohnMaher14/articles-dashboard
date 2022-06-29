@@ -1,0 +1,146 @@
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<div class="" *ngIf="loadingAction">
+  <app-action-loader></app-action-loader>
+</div>
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header no-gutters row bg-primary align-item-center">
+          <div class="col-md-2">
+            <h5>Articles</h5>
+
+          </div>
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-8">
+                <form [formGroup]="filter" (ngSubmit)="onSubmit()">
+                  <div class="row justify-content-center align-items-end">
+
+                    <div class="col-md-5">
+                      <div class="form-group d-flex align-items-center mb-0">
+
+                        <label for="date1" class="mr-1 mb-0">From</label>
+                        <input type="date" class="form-control" formControlName="date1" id="date1">
+                      </div>
+                    </div>
+
+                    <div class=" col-md-5 ">
+                      <div class="form-group d-flex align-items-center mb-0">
+
+                        <label for="date2" class="mr-1 mb-0">To</label>
+                        <input [max]="today" type="date" class="form-control" formControlName="date2" id="date2">
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group mb-0">
+
+                        <button class="btn btn-light w-100 d-flex align-items-center justify-content-center h-100" style="padding:10px ;"  [disabled]="filter.invalid" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-3">
+
+
+                    <select type="text" (change)="onChange($event)" name="" id="" class="form-control">
+                      <option value="">Select one</option>
+                      <option value="{{category.id}}" *ngFor="let category of categories">{{category.title}}</option>
+
+                    </select>
+                    <!-- <input type="text" class="form-control" [(ngModel)]="searchWord"> -->
+
+              </div>
+              <div class="col-md-1">
+                <a type="button" class="btn btn-light w-100 d-flex align-items-center justify-content-center h-100" routerLink="/create-article"><i class="fa fa-plus" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-block row">
+          <div class="col-sm-12 col-lg-12 col-xl-12">
+            <div *ngIf="success" class="alert alert-success" role="alert">
+              {{ success }}
+            </div>
+            <div *ngIf="error" class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+            <div *ngIf="delete" class="alert alert-danger" role="alert">
+              {{ delete }}
+            </div>
+            <div  class="table-responsive">
+              <table datatable class="table">
+                <thead class="table-primary">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Trending</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let article of articles">
+                    <th scope="row">{{article.id}}</th>
+                    <td *ngIf="article.text.length > 20">{{article.title | slice:0:20}} ...</td>
+                    <td *ngIf="article.text.length <= 20">{{article.title}}</td>
+                    <td *ngIf="article.post_status === 1"><span><i class="fa fa-circle text-success" aria-hidden="true"></i></span></td>
+                    <td *ngIf="article.post_status === 0"><span><i class="fa fa-circle text-danger" aria-hidden="true"></i></span></td>
+                    <td *ngIf="article.trend_status === 1"><span><i class="fa fa-circle text-success" aria-hidden="true"></i></span></td>
+                    <td *ngIf="article.trend_status === 0"><span><i class="fa fa-circle text-danger" aria-hidden="true"></i></span></td>
+                    <td>{{article.publish_name}}</td>
+                    <td>{{article.updated_at | date:'short'}}</td>
+
+                    <td class=" d-flex justify-content-start">
+                      <a
+                        routerLink="/edit-article/{{ article?.id }}"
+                        class="btn btn-pill btn-info btn-air-info btn-air-info mr-1"
+                        ><i class="fa fa-edit"></i
+                      ></a>
+                      <a
+                        routerLink="/gallery/{{ article?.id }}"
+                        class="btn btn-pill mr-1 btn-outline-secondary"
+                        ><i class="fa fa-image"></i
+                      ></a>
+                      <a
+                        routerLink="/comments/{{ article?.id }}"
+                        class="btn btn-pill btn-warning btn-air-warning btn-air-warning mr-1"
+                        ><i class="fa fa-comment"></i
+                      ></a>
+
+                      <button *ngIf="article.post_status == 1"
+                        (click)="onDelete(article.id, article.id)"
+                        class="btn btn-pill btn-danger btn-air-danger btn-air-danger mr-1"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                      <button *ngIf="article.post_status == 0"
+                        (click)="onEnable(article.id, article.id)"
+                        class="btn btn-pill btn-success btn-air-success btn-air-success mr-1"
+                      >
+                        <i class="fa fa-check"></i>
+                      </button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Container-fluid Ends-->
+

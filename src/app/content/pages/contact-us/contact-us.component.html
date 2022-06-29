@@ -1,0 +1,64 @@
+
+<div class="" *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header no-gutters row bg-primary">
+          <div class="col-md-12">
+            <h5>About us</h5>
+
+          </div>
+
+        </div>
+        <div class="card-block row">
+          <div class="col-sm-12 col-lg-12 col-xl-12">
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="table-primary">
+                  <tr>
+                    <th>id</th>
+                    <th >Contact page banner</th>
+                    <th>Address</th>
+                    <th >Location</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+
+
+                    <th style="width: 0;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <td>1</td>
+                    <td><img [src]="contactUsImage+contactUsPage?.banner_image" height="40px" width="60px" alt=""></td>
+                    <td>{{contactUsPage?.address}}</td>
+                    <td>{{contactUsPage?.location}}</td>
+                    <td>{{contactUsPage?.email}}</td>
+                    <td>{{contactUsPage?.phone}}</td>
+
+
+                    <td >
+                        <a routerLink="/contact-us/edit/{{contactUsPage?.id}}" class="btn btn-round mr-1 btn-success"><i class="fa fa-edit"></i></a>
+                    </td>
+
+
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
