@@ -80,7 +80,6 @@ onChange(deviceValue:any) {
       this.articles  = response.categoryData.post_re
 
       this.loading = false;
-      this.dtTrigger.next(null);
 
     })
 }
@@ -92,7 +91,6 @@ onChange(deviceValue:any) {
       console.log(response);
       this.articles = response.row;
       this.loading = false;
-      this.dtTrigger.next(null);
 
     }
     )

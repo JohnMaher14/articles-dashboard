@@ -53,7 +53,7 @@
                     formControlName="address"
                     id="address"
                     class="form-control"
-                    [ngModel]="contactUsData.address"
+                    [ngModel]="contactUsData?.address"
 
                   />
                 </div>
@@ -62,11 +62,12 @@
                 <div class="form-group bmd-form-group">
                   <label class="bmd-label-floating">Phone</label>
                   <input
-                    type="text"
+                    type="number"
+                    onkeypress="isInputNumber(event)"
                     formControlName="phone"
                     id="phone"
                     class="form-control"
-                    [ngModel]="contactUsData.phone"
+                    [ngModel]="contactUsData?.phone"
 
                   />
                 </div>
@@ -79,7 +80,7 @@
                     formControlName="facebook"
                     id="facebook"
                     class="form-control"
-                    [ngModel]="contactUsData.facebook"
+                    [ngModel]="contactUsData?.facebook"
 
                   />
                 </div>
@@ -92,7 +93,7 @@
                     formControlName="twitter"
                     id="twitter"
                     class="form-control"
-                    [ngModel]="contactUsData.twitter"
+                    [ngModel]="contactUsData?.twitter"
 
                   />
                 </div>
@@ -105,7 +106,7 @@
                     formControlName="instagram"
                     id="instagram"
                     class="form-control"
-                    [ngModel]="contactUsData.instagram"
+                    [ngModel]="contactUsData?.instagram"
 
                   />
                 </div>
@@ -118,12 +119,12 @@
                     formControlName="map_link"
                     id="map_link"
                     class="form-control"
-                    [ngModel]="contactUsData.map_link"
+                    [ngModel]="contactUsData?.map_link"
 
                   />
                 </div>
               </div>
-
+              <input type="hidden" formControlName="banner_image" [ngModel]="contactUsData?.banner_image">
               <div class="col-md-6">
                 <div class="form-group bmd-form-group is-filled">
                   <div class="row align-items-end">
@@ -139,7 +140,7 @@
 
                     </div>
                     <div class="col-md-3">
-                      <img [src]="aboutLink+contactUsData.banner_image" height="50px" class="w-100" alt="">
+                      <img [src]="aboutLink+contactUsData?.banner_image" height="50px" class="w-100" alt="">
                     </div>
                   </div>
 
@@ -148,7 +149,7 @@
             </div>
             <div class="row no-gutters justify-content-end">
               <button class="btn btn-primary" [disabled]="contactUsEdit.invalid">
-                Edit about us
+                Edit contact us
               </button>
             </div>
           </form>

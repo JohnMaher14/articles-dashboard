@@ -53,11 +53,11 @@
                         <td class="text-truncate">
                           <button
                             type="button"
-                            [attr.data-toggle]="'modal'"
-                            [attr.data-target]="'#messageModal' + message.id"
+                            [attr.data-bs-toggle]="'modal'"
+                            [attr.data-bs-target]="'#messageModal' + message.id"
                             class="btn btn-primary text-white"
                           >
-                            <i class="la la-search" aria-hidden="true"></i>
+                            <i class="fa fa-search" aria-hidden="true"></i>
                           </button>
                         </td>
 
@@ -79,4 +79,78 @@
 
   </div>
 </div>
+
+<div
+  *ngFor="let messageModal of messages"
+  class="modal fade"
+  id="messageModal{{ messageModal.id }}"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-0" id="exampleModalLabel">
+          Message details
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h4><i class="fas fa-address-card"></i> Name:</h4>
+                <p>{{ messageModal.name  | slice:0:24 }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h4><i class="fa la-at"></i> Email:</h4>
+                <p>{{ messageModal.email | slice:0:20 }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h4><i class="fas la-phone-volume"></i> Phone:</h4>
+                <p>{{ messageModal.phone | slice:0:24 }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h4><i class="fas la-calendar"></i> Date:</h4>
+                <p>{{ messageModal.created_at  | slice:0:24 }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h4><i class="fas la-comments"></i> Message:</h4>
+                <p>{{ messageModal.message }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 

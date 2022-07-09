@@ -53,7 +53,7 @@
 
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input id="phone" class="form-control" type="number" name="text" formControlName="phone" [ngModel]="admin?.phone">
+                <input id="phone" onkeypress="isInputNumber(event)" class="form-control" type="number" name="text" formControlName="phone" [ngModel]="admin?.phone">
               </div>
               <div *ngIf="updateAdmin.controls['phone'].touched && updateAdmin.controls['phone'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
                 <p class="mb-0" *ngIf="updateAdmin.controls['phone'].errors['required']">Phone is required</p>

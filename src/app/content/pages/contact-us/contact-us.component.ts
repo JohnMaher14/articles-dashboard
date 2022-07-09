@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class ContactUsComponent implements OnInit {
   loading!:boolean;
   contactUsPage:any;
-  contactUsImage = `${environment.imageUrl}contact_us_page/`;
+  contactUsImage = `${environment.imageUrl}contact_us/`;
 
   constructor(
     private _ContactsService:ContactsService,

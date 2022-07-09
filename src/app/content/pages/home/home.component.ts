@@ -15,45 +15,37 @@ import { CategoryComponent } from '../category/category.component';
 export class HomeComponent implements OnInit {
   categoryLength!:number;
   articleLength!:number;
-  commentLength!:number;
+  statistics!:any;
   articles: any[] = [];
-  username:any
+  username:any;
+  loading:boolean= false;
   constructor(
-    private _CategoryService:CategoryService,
     private _ArticleService:ArticleService,
-    private _CommentsService:CommentsService,
     private _HomeService:HomeService,
     private _Title:Title
   ) { }
-  showCategories(){
-    this._CategoryService.getAllCategory().subscribe(
-      (response) => {
-        this.categoryLength = response.rows.length;
-      }
-    )
-  }
   showArticles(){
+    this.loading = true;
     this._ArticleService.getArticles().subscribe(
       (response) => {
-        this.articleLength = response.row.length;
-        this.articles = response.row;
+        console.log(response);
+        const array = response.row.filter(
+          (x:any)=> {
+            return x.post_status != 0;
+          }
+        )
+        this.articles = array;
       }
     )
   }
-  showComments(){
-    // this._CommentsService.getAllComments().subscribe(
-    //   (response) => {
-    //     this.commentLength = response.row.length;
-    //   }
-    // )
-  }
+
   showStatistics(){
-    this._HomeService.submitData(
-      this.username.value,
-      this.username.value
-    ).subscribe(
+    this.loading= true
+    this._HomeService.getGeneralStatistics().subscribe(
       (response) => {
-        this.categoryLength = response.comments;
+        this.statistics = response;
+        this.loading= false
+
       }
     )
   }
@@ -64,9 +56,7 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getUsername();
-    this.showCategories();
     this.showArticles();
-    this.showComments();
     this.showStatistics();
     this._Title.setTitle(`${environment.title}Home`)
   }

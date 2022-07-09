@@ -1,3 +1,4 @@
+<app-loader *ngIf="loading"></app-loader>
 <div class="container-fluid">
   <div class="page-title">
     <div class="row">
@@ -51,7 +52,7 @@
           <div class="media static-widget">
             <div class="media-body">
               <h6 class="font-roboto">Catgeories</h6>
-              <h4 class="mb-0 counter">{{categoryLength}}</h4>
+              <h4 class="mb-0 counter">{{statistics?.categorys}}</h4>
             </div>
             <img src="assets/images/svgs/category.svg" height="39" width="45" alt="">
           </div>
@@ -70,7 +71,7 @@
           <div class="media static-widget">
             <div class="media-body">
               <h6 class="font-roboto">Articles</h6>
-              <h4 class="mb-0 counter">{{articleLength}}</h4>
+              <h4 class="mb-0 counter">{{statistics?.Posts}}</h4>
             </div>
             <img src="assets/images/svgs/article.svg" height="39" width="45" alt="">
 
@@ -90,7 +91,7 @@
           <div class="media static-widget">
             <div class="media-body">
               <h6 class="font-roboto">Comments</h6>
-              <h4 class="mb-0 counter">{{categoryLength}}</h4>
+              <h4 class="mb-0 counter">{{statistics?.commentCount}}</h4>
             </div>
             <svg class="fill-primary" width="44" height="46" viewBox="0 0 44 46" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -116,7 +117,7 @@
           <div class="media static-widget">
             <div class="media-body">
               <h6 class="font-roboto">Views</h6>
-              <h4 class="mb-0 counter">45631</h4>
+              <h4 class="mb-0 counter">{{statistics?.viewCount}}</h4>
             </div>
             <img src="assets/images/svgs/eye.svg" class="text-secondary" height="39" width="45" alt="">
 
@@ -156,9 +157,9 @@
                     <div class="media">
                       <div class="square-box me-2"><img class="img-fluid b-r-5" [src]="'https://digitalbondmena.com/aklny/posts/'+article.main_image" alt=""></div>
                       <div class="media-body ps-2">
-                        <div class="avatar-details"><a href="product-page.html">
+                        <div class="avatar-details"><a [routerLink]="['/edit-article/', article.id]">
                             <h6>{{article.title}}</h6>
-                          </a><span *ngIf="article.text.length > 50">{{article.text | slice:0:50}} ..</span><span *ngIf="article.text.length <= 50">{{article.text | slice:0:50}}</span></div>
+                          </a><span *ngIf="article.text.length > 50" [innerHtml]="article.text | slice:0:50"></span><span *ngIf="article.text.length <= 50" [innerHtml]="article.text"></span></div>
                       </div>
                     </div>
                   </td>

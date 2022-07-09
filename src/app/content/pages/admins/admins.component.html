@@ -115,7 +115,10 @@
 
             <div class="form-group">
               <label for="text">Role</label>
-              <input id="text" class="form-control" type="text" name="text" formControlName="role">
+              <select id="text" class="form-control" type="text" name="text" formControlName="role">
+                <option value="">Select role</option>
+                <option value="super-admin">Super admin</option>
+              </select>
             </div>
             <div *ngIf="createAdmin.controls['role'].touched && createAdmin.controls['role'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
               <p class="mb-0" *ngIf="createAdmin.controls['role'].errors['required']">Role is required</p>
@@ -125,7 +128,7 @@
 
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input id="phone" class="form-control" type="number" name="text" formControlName="phone">
+              <input id="phone" onkeypress="isInputNumber(event)" class="form-control" type="number" name="text" formControlName="phone">
             </div>
             <div *ngIf="createAdmin.controls['phone'].touched && createAdmin.controls['phone'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
               <p class="mb-0" *ngIf="createAdmin.controls['phone'].errors['required']">Phone is required</p>

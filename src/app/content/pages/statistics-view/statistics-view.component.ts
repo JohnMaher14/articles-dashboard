@@ -13,15 +13,16 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./statistics-view.component.scss']
 })
 export class StatisticsViewComponent implements OnInit {
-  articles: any[] =[];
+  views: any[] =[];
   categories: any[] =[];
-  articlesSearch: any[] =[];
+  viewsSearch: any[] =[];
   categoriesSearch: any[] =[];
   articlesAll: any[] =[];
   categoriesAll: any[] =[];
   loading!:boolean;
   searchContainer!:boolean;
   today: any;
+  statistics:any;
   date = new DatePipe('en-US');
   constructor(
     private _HomeService:HomeService,
@@ -53,10 +54,15 @@ export class StatisticsViewComponent implements OnInit {
         (response) => {
 
           this.categories = response.categorys
-          this.articles = response.categoryCount
+          this.views = response.postsViewCount
 
           this.loading = false;
 
+        }
+      )
+      this._HomeService.getGeneralStatistics().subscribe(
+        (response) => {
+          this.statistics = response.viewCount
         }
       )
 
@@ -75,7 +81,7 @@ export class StatisticsViewComponent implements OnInit {
     this._HomeService.submitData(this.filter.value.date1 , this.filter.value.date2).subscribe(
       (response) => {
         this.categoriesSearch = response.categorys
-        this.articlesSearch = response.categoryCount
+        this.viewsSearch = response.postsViewCount
         this.loading = false;
 
       }

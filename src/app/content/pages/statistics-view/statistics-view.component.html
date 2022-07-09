@@ -52,7 +52,7 @@
                   <img src="assets/images/svgs/category.svg" height="39" width="45" alt="">
                 </div>
                 <div class="progress-widget">
-                  <h4 class="counter">Views : {{articlesAll.length}}</h4>
+                  <h4 class="counter">Views : {{statistics}}</h4>
                   <div class="progress sm-progress-bar progress-animate">
                     <div class="progress-gradient-secondary" role="progressbar" style="width: 100%" aria-valuenow="100"
                       aria-valuemin="0" aria-valuemax="100"><span class="animate-circle"></span></div>
@@ -73,9 +73,9 @@
                     <img src="assets/images/svgs/article.svg" height="39" width="45" alt="">
 
                   </div>
-                  <ng-container *ngFor="let article of articles; let index = index">
+                  <ng-container *ngFor="let view of views; let index = index">
 
-                    <h4 class="counter" *ngIf="index === i">Views : {{article}}</h4>
+                    <h4 class="counter" *ngIf="index === i">Views : {{view}}</h4>
 
                     <div class="progress-widget" *ngIf="index === i">
                       <div class="progress sm-progress-bar progress-animate">
@@ -100,9 +100,9 @@
                     <img src="assets/images/svgs/article.svg" height="39" width="45" alt="">
 
                   </div>
-                  <ng-container *ngFor="let article of articlesSearch; let index = index">
+                  <ng-container *ngFor="let view of viewsSearch; let index = index">
 
-                    <h4 class="counter" *ngIf="index === i">Views : {{article}}</h4>
+                    <h4 class="counter" *ngIf="index === i">Views : {{view}}</h4>
 
                   </ng-container>
                   <div class="progress-widget">

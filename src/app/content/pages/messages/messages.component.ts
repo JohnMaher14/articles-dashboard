@@ -46,6 +46,7 @@ export class MessagesComponent implements OnInit {
     this._ContactsService.getClientMessages().subscribe(
       (response) => {
         this.messages = response.rows
+        console.log(response);
         this.loading = false
       }
     )

@@ -18,7 +18,7 @@ export class EditContactUsComponent implements OnInit {
   aboutusEdit!:FormGroup;
   contactUsData:any;
   loading!:boolean;
-  aboutLink= `${environment.imageUrl}contact_us_page/`;
+  aboutLink= `${environment.imageUrl}contact_us/`;
 
   constructor(
     private _ContactsService:ContactsService,
@@ -37,6 +37,7 @@ export class EditContactUsComponent implements OnInit {
     map_link: new FormControl('',  Validators.required),
     banner_image: new FormControl(null),
   })
+
   aboutUsFormData(){
     this.loading = true
     this._ContactsService.getContactData().subscribe(
@@ -48,9 +49,10 @@ export class EditContactUsComponent implements OnInit {
       }
     )
   }
+
   ngOnInit(): void {
     this.aboutUsFormData()
-    this._Title.setTitle(`Digital bond | About us edit`)
+    this._Title.setTitle(`Aklny shokran | contact us edit`)
 
   }
 
@@ -76,13 +78,13 @@ export class EditContactUsComponent implements OnInit {
       this.contactUsEdit.value.banner_image
     ).subscribe(
       (response) => {
-            this.success = response.body.success
+            this.success = response.success
             setTimeout(() => {
               this._Router.navigate(['/contact-us']);
             }, 2000);
             console.log(response);
       }, error => {
-          this.error = error.error.error
+          this.error = error.message
           console.log(error);
       }
     )

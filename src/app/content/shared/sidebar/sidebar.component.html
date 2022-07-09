@@ -30,7 +30,7 @@
                           aria-hidden="true"> </i></div>
                     </li>
 
-                    <li class="sidebar-list">
+                    <li class="sidebar-list" (click)="dropdown = false">
                       <a class="sidebar-link sidebar-title" routerLinkActive="active" routerLink="/home"
                         data-bs-original-title="" title="">
                         <i class="fa fa-home"></i>
@@ -38,7 +38,7 @@
 
                       </a>
                     </li>
-                    <li class="sidebar-list">
+                    <li class="sidebar-list" (click)="dropdown = false">
                       <a class="sidebar-link sidebar-title" routerLinkActive="active" routerLink="/admins"
                         data-bs-original-title="" title="">
                         <i class="fa fa-user-cog"></i>
@@ -46,7 +46,7 @@
 
                       </a>
                     </li>
-                    <li class="sidebar-list">
+                    <li class="sidebar-list" (click)="dropdown = false">
                       <a class="sidebar-link sidebar-title" routerLinkActive="active" routerLink="/about-us"
                         data-bs-original-title="" title="">
                         <i class="fas fa-info-circle"></i>
@@ -54,7 +54,7 @@
 
                       </a>
                     </li>
-                    <li class="sidebar-list">
+                    <li class="sidebar-list" (click)="dropdown = false">
                       <a class="sidebar-link sidebar-title" routerLinkActive="active" routerLink="/categories"
                         data-bs-original-title="" title="">
                         <i class="fa fa-th-large"></i>
@@ -62,7 +62,7 @@
 
                       </a>
                     </li>
-                    <li class="sidebar-list">
+                    <li class="sidebar-list" (click)="dropdown = false">
                       <a class="sidebar-link sidebar-title" routerLinkActive="active" routerLink="/articles"
                         data-bs-original-title="" title="">
                         <i class="fa fa-newspaper"></i>
@@ -70,7 +70,7 @@
 
                       </a>
                     </li>
-                    <li class="sidebar-list">
+                    <li class="sidebar-list" (click)="dropdown = false">
                       <a class="sidebar-link sidebar-title" routerLinkActive="active" routerLink="/contact-us"
                         data-bs-original-title="" title="">
                         <i class="fa fa-address-card"></i>
@@ -78,7 +78,7 @@
 
                       </a>
                     </li>
-                    <li class="sidebar-list">
+                    <li class="sidebar-list" (click)="dropdown = false">
                       <a class="sidebar-link sidebar-title" routerLinkActive="active" routerLink="/messages"
                         data-bs-original-title="" title="">
                         <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -87,16 +87,8 @@
                       </a>
                     </li>
 
-                    <!-- <li class="sidebar-list">
-                      <a class="sidebar-link sidebar-title" routerLinkActive="active" routerLink="/statistics"
-                        data-bs-original-title="" title="">
-                        <i class="fa fa-chart-line"></i>
-                        <span>Statistics </span>
-
-                      </a>
-                    </li> -->
                     <li class="sidebar-list" (click)="dropdown = !dropdown">
-                      <a class="sidebar-link sidebar-title" routerLinkActive="active" [ngClass]="{'active': dropdown}" href="#">
+                      <a class="sidebar-link sidebar-title" routerLinkActive="active" [ngClass]="{'active': dropdown}">
                         <i class="fa fa-chart-line"></i>
                         <span class="lan-6">Statistics</span>
                         <div class="according-menu" >
@@ -105,8 +97,8 @@
                         </div>
                       </a>
                       <ul class="sidebar-submenu" *ngIf="dropdown">
-                        <li><a routerLink="/statistics-articles">Articles</a></li>
-                        <li><a routerLink="/statistics-views">Views</a></li>
+                        <li><a routerLink="/statistics-articles" routerLinkActive="active" (click)="dropdown = !dropdown ">Articles</a></li>
+                        <li><a routerLink="/statistics-views" routerLinkActive="active" (click)="dropdown = !dropdown">Views</a></li>
                       </ul>
                     </li>
                   </div>

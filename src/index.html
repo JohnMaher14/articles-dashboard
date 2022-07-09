@@ -18,16 +18,30 @@
 </head>
 <body class="box-layout">
   <app-root>
-    <div style="display: flex; justify-content: center; align-items: center;">
-      <p>Loading</p>
-    </div>
-  </app-root>
+    <div class="loader">
+      <div class="dots">
+          <img src="assets/images/Logo_white.png" class="loader_img" alt="">
+          <div class="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+      </div>
+    </div>  </app-root>
 
 
 
   <!-- Plugins JS start-->
   <script src="https://cdn.ckeditor.com/4.17.1/full-all/ckeditor.js"></script>
 
-
+  <script>
+      function isInputNumber(event) {
+    var char = String.fromCharCode(event.which);
+    if(!(/[0-9]/.test(char))){
+        event.preventDefault();
+    }
+  }
+  </script>
 </body>
 </html>

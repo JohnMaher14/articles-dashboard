@@ -17,6 +17,9 @@ export class HomeService {
   getStatistics():Observable<any>{
     return this._HttpClient.get(`${environment.apiUrl}search`)
   }
+  getGeneralStatistics():Observable<any>{
+    return this._HttpClient.get(`${environment.apiUrl}homeCount`)
+  }
   submitData(start_date:any , endDate:any) :Observable<any> {
     const params = new HttpParams()
     .set('start_date', start_date)
