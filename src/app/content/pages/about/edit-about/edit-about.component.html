@@ -317,7 +317,7 @@
               </div>
             </div>
             <div class="row no-gutters justify-content-end">
-              <button class="btn btn-primary" [disabled]="aboutusEdit.invalid">
+              <button class="btn btn-primary" [disabled]="aboutusEdit.invalid || aboutusEdit.pristine">
                 Edit about us
               </button>
             </div>

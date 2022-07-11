@@ -62,7 +62,7 @@
           </div>
           <div class="col-12">
 
-            <button type="submit" class="btn btn-primary" [disabled]="updateCategory.invalid">Save changes</button>
+            <button type="submit" class="btn btn-primary" [disabled]="updateCategory.invalid || updateCategory.pristine">Save changes</button>
           </div>
         </div>
       </form>

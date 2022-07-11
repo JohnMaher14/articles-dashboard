@@ -43,7 +43,10 @@
 
               <div class="form-group">
                 <label for="text">Role</label>
-                <input id="text" class="form-control" type="text" name="text" formControlName="role" [ngModel]="admin?.role">
+                <select id="text" class="form-control" type="text" name="text" formControlName="role">
+                  <option value="">Select role</option>
+                  <option value="super-admin">Super admin</option>
+                </select>
               </div>
               <div *ngIf="updateAdmin.controls['role'].touched && updateAdmin.controls['role'].errors != null" id="email" class="alert mt-2 alert-danger" role="alert">
                 <p class="mb-0" *ngIf="updateAdmin.controls['role'].errors['required']">Role is required</p>
@@ -65,7 +68,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" [disabled]="updateAdmin.invalid">Save changes</button>
+          <button type="submit" class="btn btn-primary" [disabled]="updateAdmin.invalid || updateAdmin.pristine">Save changes</button>
         </div>
     </form>
     </div>

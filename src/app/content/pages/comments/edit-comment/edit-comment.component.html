@@ -55,7 +55,7 @@
 
           </div>
         </div>
-          <button type="submit" class="btn btn-primary" [disabled]="updateComment.invalid">Save changes</button>
+          <button type="submit" class="btn btn-primary" [disabled]="updateComment.invalid || updateComment.pristine">Save changes</button>
       </form>
     </div>
   </div>
