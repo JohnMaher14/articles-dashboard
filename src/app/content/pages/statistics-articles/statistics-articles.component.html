@@ -8,33 +8,34 @@
     <div class="col-sm-12">
       <div class="card bg-transparent">
         <div class="card-header no-gutters row align-items-center bg-primary">
-          <div class="col-md-4">
+          <div class="col-lg-4 col-md-3">
             <h5 class="mb-0">Statistics</h5>
 
           </div>
-          <div class="col-md-8">
+          <div class="col-lg-8 col-md-9">
             <form [formGroup]="filter" (ngSubmit)="onSubmit()">
-              <div class="row justify-content-center align-items-end">
+              <div class="date-filter row justify-content-center align-items-end">
 
                 <div class="col-md-5">
                   <div class="form-group d-flex align-items-center mb-0">
 
-                    <label for="date1" class="mr-1 mb-0">From</label>
+                    <label for="date1" class="date1 mr-1 mb-0">From</label>
                     <input type="date" class="form-control" formControlName="date1" id="date1">
                   </div>
                 </div>
 
-                <div class=" col-md-5 ">
+                <div class="col-md-5">
                   <div class="form-group d-flex align-items-center mb-0">
 
-                    <label for="date2" class="mr-1 mb-0">To</label>
+                    <label for="date2" class="date2 mr-1 mb-0">To</label>
                     <input [max]="today" type="date" class="form-control" formControlName="date2" id="date2">
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group mb-0">
 
-                    <button class="btn btn-white" [disabled]="filter.invalid" type="submit">Submit</button>
+                    <button class="btn btn-white h-38px btn-submit d-flex justify-content-center align-items-center w-100" [disabled]="filter.invalid" type="submit"><i class="fa fa-filter"
+                      aria-hidden="true"></i></button>
                   </div>
                 </div>
               </div>

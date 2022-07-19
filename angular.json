@@ -43,17 +43,14 @@
               "src/assets/css/color-1.css",
               "src/assets/css/responsive.css",
               "src/assets/css/style.css",
-              "src/styles.scss",
-              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
               "src/assets/js/bootstrap/bootstrap.bundle.min.js",
-              "src/assets/js/config.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/datatables.net/js/jquery.dataTables.min.js",
-              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"
+              "src/assets/js/config.js"
+
             ]
           },
           "configurations": {

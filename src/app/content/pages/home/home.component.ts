@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
   }
   getUsername(){
     this.username = JSON.parse(
-      localStorage.getItem('currentUsername') || '{}'
+      sessionStorage.getItem('currentUsername') || '{}'
     );
   }
   ngOnInit(): void {

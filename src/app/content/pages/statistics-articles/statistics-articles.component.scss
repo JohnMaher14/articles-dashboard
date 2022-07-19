@@ -5,3 +5,26 @@
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 450px) {
+  .date1{
+    display: block;
+    width: 100%;
+  }
+  .date2{
+    display: block;
+    width: 100%;
+  }
+  .date-filter{
+    .d-flex{
+      display: unset !important;
+    }
+  }
+  .btn-submit{
+    margin: 10px 0;
+  }
+  .card-header{
+    .col-md-2{
+      text-align: center;
+    }
+  }
+}

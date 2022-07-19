@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ContactsService } from 'src/app/services/contacts.service';
 import { HomeService } from 'src/app/services/home.service';
 import { environment } from 'src/environments/environment';
@@ -16,7 +16,7 @@ export class MessagesComponent implements OnInit {
   error: string = '';
   delete: string = '';
   messages: any[] =[];
-  modalRef!:BsModalRef;
+  modalRef!:any;
   seeMore = false;
   pageName: string ='Messages';
   fullscreed: boolean = false;
@@ -30,6 +30,7 @@ export class MessagesComponent implements OnInit {
   constructor(
     private _ContactsService:ContactsService,
     private _Title:Title,
+    private _BsModalRef:BsModalService
   ) { }
 
   ngOnInit(): void {

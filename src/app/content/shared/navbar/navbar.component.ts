@@ -32,13 +32,14 @@ export class NavbarComponent implements OnInit {
     this.isCollapsed = false
 
   }
+
   authentication(){
     this._AuthService.currentUserData.subscribe(() => {
       if (this._AuthService.currentUserData.getValue() == null) {
         this.isLogined = false;
       } else {
         this.username = JSON.parse(
-          localStorage.getItem('currentUsername') || '{}'
+          sessionStorage.getItem('currentUsername') || '{}'
         );
         this.isLogined = true;
       }

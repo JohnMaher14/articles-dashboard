@@ -213,6 +213,17 @@ footer{
 .header-wrapper{
   min-height: 50px;
 }
+@media screen and (max-width:800px) {
+  .sidebar-wrapper{
+    display: none;
+
+  }
+}
+@media screen and (min-width:800px) {
+  .h-38px{
+    height: 38px;
+  }
+}
 body.close_icon{
   .page-wrapper.compact-wrapper .page-header{
    margin-left: 0;
@@ -226,8 +237,12 @@ body.close_icon{
  .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper{
   margin-left: -330px;
   display: none;
+  @media screen and (max-width:800px) {
+    margin-left: 0;
+    display: unset;
+  }
+}
 
- }
  .page-wrapper.compact-wrapper .page-body-wrapper .page-body{
   margin-left: 0;
 

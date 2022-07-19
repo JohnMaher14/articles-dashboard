@@ -85,7 +85,7 @@ export class EditArticleComponent implements OnInit {
   }
   getUsername(){
     this.username = JSON.parse(
-      localStorage.getItem('currentUsername') || '{}'
+      sessionStorage.getItem('currentUsername') || '{}'
     );
   }
   onUpdate(){

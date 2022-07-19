@@ -28,7 +28,7 @@ export class AuthComponent implements OnInit {
   })
   ngOnInit(): void {
     this._Title.setTitle(`${environment.title}Login`);
-        if (localStorage.getItem('currentUserToken') !== null) {
+        if (sessionStorage.getItem('currentUserToken') !== null) {
       this._Router.navigate(['/home'])
     }
   }
@@ -37,9 +37,9 @@ export class AuthComponent implements OnInit {
     this._AuthService.login(auth.value).subscribe(
       (response) => {
         if (response.message === 'sucess') {
-          localStorage.setItem('currentUserToken', JSON.stringify(response.access_token));
-          localStorage.setItem('currentUsername', JSON.stringify(response.user.name));
-          localStorage.setItem('currentUserExpiresIn', JSON.stringify(response.expires_in));
+          sessionStorage.setItem('currentUserToken', JSON.stringify(response.access_token));
+          sessionStorage.setItem('currentUsername', JSON.stringify(response.user.name));
+          sessionStorage.setItem('currentUserExpiresIn', JSON.stringify(response.expires_in));
           // save
           this._AuthService.saveCurrentUserToken();
           this._Router.navigate(['/home']);

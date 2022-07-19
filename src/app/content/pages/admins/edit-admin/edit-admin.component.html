@@ -44,7 +44,7 @@
               <div class="form-group">
                 <label for="text">Role</label>
                 <select id="text" class="form-control" type="text" name="text" formControlName="role">
-                  <option value="">Select role</option>
+                  <option value="{{admin?.role}}" class="d-none" [selected]="admin?.role">{{admin?.role}}</option>
                   <option value="super-admin">Super admin</option>
                 </select>
               </div>

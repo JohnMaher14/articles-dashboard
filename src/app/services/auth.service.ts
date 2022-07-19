@@ -13,7 +13,7 @@ export class AuthService {
   currentUserData: any = new BehaviorSubject(null);
   userDataContainer:any[]=[];
   constructor(private _HttpClient: HttpClient , private _Router:Router) {
-    if (localStorage.getItem('currentUserToken')) {
+    if (sessionStorage.getItem('currentUserToken')) {
       this.saveCurrentUserToken();
     }
 
@@ -28,12 +28,12 @@ export class AuthService {
   }
 
   saveCurrentUserToken() {
-    let encodedToken: any = localStorage.getItem('currentUserToken');
+    let encodedToken: any = sessionStorage.getItem('currentUserToken');
     this.currentUserData.next(encodedToken)
 
   }
   autoLogout(){
-    let encodedExpiresIn: any = localStorage.getItem('currentUserExpiresIn');
+    let encodedExpiresIn: any = sessionStorage.getItem('currentUserExpiresIn');
 
     const ExpiresDate: any = new Date(encodedExpiresIn).getTime() - new Date().getTime();
     if (ExpiresDate && (Date.now() > ExpiresDate)) {
@@ -45,9 +45,9 @@ export class AuthService {
 
   signOut(){
     this.currentUserData.next(null);
-    localStorage.removeItem('currentUserToken');
-    localStorage.removeItem('currentUserExpiresIn');
-    localStorage.removeItem('currentUsername');
+    sessionStorage.removeItem('currentUserToken');
+    sessionStorage.removeItem('currentUserExpiresIn');
+    sessionStorage.removeItem('currentUsername');
     this._Router.navigate(['/auth']);
     if (this.tokenExpirationTime) {
       clearTimeout(this.tokenExpirationTime)
