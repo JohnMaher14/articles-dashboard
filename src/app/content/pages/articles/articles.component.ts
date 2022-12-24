@@ -32,6 +32,12 @@ export class ArticlesComponent implements OnInit {
   dateContainer = false;
   today: any;
   date = new DatePipe('en-US');
+  bsRangeValue!: Date[];
+
+  minDate!: Date;
+    bsValue = new Date();
+
+  maxDate!: Date;
   constructor(
     public _BsModalService:BsModalService,
     private _ArticleService:ArticleService,
@@ -41,7 +47,7 @@ export class ArticlesComponent implements OnInit {
   ) {
 
 
-   }
+  }
 
     // create movie
     openModal(template: any) {
@@ -64,7 +70,8 @@ showCategories(){
     this.categories = response.rows;
     this.loading = false;
 
-  }
+
+    }
   )
 }
 
@@ -110,7 +117,9 @@ onChange(deviceValue:any) {
     this._Title.setTitle(`${environment.title}Articles`);
     this.today = this.date.transform(Date.now(), 'yyyy-MM-dd');
 
-
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.maxDate.getDate());
+    this.bsRangeValue = [this.bsValue, this.maxDate];
   }
   onDelete(id:number , data:any){
     if(confirm(`Are you sure to disable article with id ${id}`)) {
@@ -157,20 +166,16 @@ onChange(deviceValue:any) {
   }
   filter = new FormGroup({
     'date1' : new FormControl('' , Validators.required),
-    'date2' : new FormControl('' ,[ Validators.required ])
   })
 
 
-  onSubmit(){
+  onSubmit(filter:FormGroup){
     this.dateContainer = false;
 
     this.loading = true
-    this._HomeService.submitData(this.filter.value.date1 , this.filter.value.date2).subscribe(
+    this._HomeService.submitData(this.date.transform(filter.value.date1[0] , 'yyyy-MM-dd') , this.date.transform(filter.value.date1[1] , 'yyyy-MM-dd')).subscribe(
       (response) => {
-        console.log(response);
         this.articles = response.posts
-        // this.categoriesSearch = response.categorys
-        // this.articlesSearch = response.categoryCount
         this.loading = false;
 
       }

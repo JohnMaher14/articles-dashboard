@@ -19,6 +19,13 @@ export class StatisticsViewComponent implements OnInit {
   categoriesSearch: any[] =[];
   articlesAll: any[] =[];
   categoriesAll: any[] =[];
+  postsViewAfterFilter!:number;
+  bsRangeValue!: Date[];
+
+  minDate!: Date;
+    bsValue = new Date();
+
+  maxDate!: Date;
   loading!:boolean;
   searchContainer!:boolean;
   today: any;
@@ -32,7 +39,7 @@ export class StatisticsViewComponent implements OnInit {
   ) { }
   filter = new FormGroup({
     'date1' : new FormControl('' , Validators.required),
-    'date2' : new FormControl('' ,[ Validators.required ])
+    // 'date2' : new FormControl('' ,[ Validators.required ])
   })
   statisticsData(){
     this.loading = true;
@@ -72,20 +79,32 @@ export class StatisticsViewComponent implements OnInit {
     this._Title.setTitle(`${environment.title}Statistics`)
 
     this.today = this.date.transform(Date.now(), 'yyyy-MM-dd');
-    console.log(this.today);
+    this.bsRangeValue = ['2022-06-19', this.today];
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() - 1);
+    this.maxDate.setDate(this.maxDate.getDate());
+    this.bsRangeValue = [this.bsValue, this.maxDate];
+
   }
-  onSubmit(){
+  onSubmit( filter:FormGroup){
     this.searchContainer = false;
 
     this.loading = true
-    this._HomeService.submitData(this.filter.value.date1 , this.filter.value.date2).subscribe(
+    this._HomeService.submitData(this.date.transform(filter.value.date1[0] , 'yyyy-MM-dd') , this.date.transform(filter.value.date1[1] , 'yyyy-MM-dd')).subscribe(
       (response) => {
         this.categoriesSearch = response.categorys
         this.viewsSearch = response.postsViewCount
         this.loading = false;
 
+        console.log(response);
+        let countArray = response.postsViewCount.reduce((acc:any, cur:any) => acc + Number(cur), 0)
+        console.log(countArray);
+        this.statistics = countArray;
       }
     )
+    console.log(this.date.transform(filter.value.date1[0] , 'yyyy-MM-dd') , this.date.transform(filter.value.date1[1] , 'yyyy-MM-dd'));
+
   }
 
 }

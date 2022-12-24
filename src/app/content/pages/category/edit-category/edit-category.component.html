@@ -15,27 +15,30 @@
 
               <div class="form-group">
                 <label for="title"> title</label>
-                <input id="title" class="form-control" type="text" name="title" formControlName="title" [ngModel]="category?.title">
+                <input id="title" class="form-control" type="text" name="title" formControlName="title"
+                  [ngModel]="category?.title">
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="form-group">
                 <label for="text"> Text</label>
-                <input id="text" class="form-control" type="text" name="text" formControlName="text" [ngModel]="category?.text">
+                <input id="text" class="form-control" type="text" name="text" formControlName="text"
+                  [ngModel]="category?.text">
               </div>
             </div>
             <div class="col-md-6">
 
               <div class="form-group">
                 <label for="category_status">Category status</label>
-                <select  class="form-control" id="category_status" name="category_status" [ngModel]="category?.category_status" formControlName="category_status">
+                <select class="form-control" id="category_status" name="category_status"
+                  [ngModel]="category?.category_status" formControlName="category_status">
                   <option class="d-none" [selected]="category?.category_status">
-                    <ng-container  *ngIf="category?.category_status === 0">Show</ng-container>
+                    <ng-container *ngIf="category?.category_status === 0">Show</ng-container>
                     <ng-container *ngIf="category?.category_status === 1">Hide</ng-container>
                   </option>
-                    <option value="0" >Hide</option>
-                    <option value="1" >Show</option>
+                  <option value="0">Hide</option>
+                  <option value="1">Show</option>
                 </select>
               </div>
             </div>
@@ -46,7 +49,7 @@
                 <div class="col-lg-10">
                   <div class="form-group">
                     <label for="image">Image</label>
-                    <input id="image"  (change)="banner_image($event)" class="form-control" type="file" name="image" >
+                    <input id="image" (change)="banner_image($event)" class="form-control" type="file" name="image">
                   </div>
 
                 </div>
@@ -62,10 +65,11 @@
           </div>
           <div class="col-12">
 
-            <button type="submit" class="btn btn-primary" [disabled]="updateCategory.invalid || updateCategory.pristine">Save changes</button>
+            <button type="submit" class="btn btn-primary"
+              [disabled]="updateCategory.invalid || updateCategory.pristine">Save changes</button>
           </div>
         </div>
       </form>
     </div>
   </div>
-  </div>
+</div>

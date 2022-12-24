@@ -23,7 +23,14 @@ export class StatisticsArticlesComponent implements OnInit {
   loading!:boolean;
   searchContainer!:boolean;
   today: any;
+  statistics!:number;
   date = new DatePipe('en-US');
+  bsRangeValue!: Date[];
+
+  minDate!: Date;
+    bsValue = new Date();
+
+  maxDate!: Date;
   constructor(
     private _HomeService:HomeService,
     private _CategoryService:CategoryService,
@@ -32,7 +39,6 @@ export class StatisticsArticlesComponent implements OnInit {
   ) { }
   filter = new FormGroup({
     'date1' : new FormControl('' , Validators.required),
-    'date2' : new FormControl('' ,[ Validators.required ])
   })
   statisticsData(){
     this.loading = true;
@@ -60,6 +66,11 @@ export class StatisticsArticlesComponent implements OnInit {
 
         }
       )
+      this._HomeService.getGeneralStatistics().subscribe(
+        (response) => {
+          this.statistics = response.Posts
+        }
+      )
 
   }
   ngOnInit(): void {
@@ -68,17 +79,23 @@ export class StatisticsArticlesComponent implements OnInit {
 
     this.today = this.date.transform(Date.now(), 'yyyy-MM-dd');
     console.log(this.today);
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() - 1);
+    this.maxDate.setDate(this.maxDate.getDate());
+    this.bsRangeValue = [this.bsValue, this.maxDate];
   }
-  onSubmit(){
+  onSubmit(filter:FormGroup){
     this.searchContainer = false;
 
     this.loading = true
-    this._HomeService.submitData(this.filter.value.date1 , this.filter.value.date2).subscribe(
+    this._HomeService.submitData(this.date.transform(filter.value.date1[0] , 'yyyy-MM-dd') , this.date.transform(filter.value.date1[1] , 'yyyy-MM-dd')).subscribe(
       (response) => {
         this.categoriesSearch = response.categorys
         this.articlesSearch = response.categoryCount
         this.loading = false;
-
+        let countArray = response.categoryCount.reduce((acc:any, cur:any) => acc + Number(cur), 0)
+        this.statistics = countArray;
       }
     )
   }

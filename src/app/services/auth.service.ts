@@ -54,4 +54,5 @@ export class AuthService {
     }
     this.tokenExpirationTime= null;
 
-  }}
+  }
+}

@@ -34,8 +34,8 @@
                     <div class="media-body">
                       <label class="switch">
 
-                        <input *ngIf="article?.trend_status == 0" class="unchek"  type="checkbox" (change)="onChangeTrend($event)"  formControlName="trend_status"><span class="switch-state"></span>
-                        <input *ngIf="article?.trend_status == 1" class="chek"  type="checkbox" (change)="onChangeTrend($event)"  formControlName="trend_status"><span class="switch-state"></span>
+                        <input [ngModel]="article?.trend_status" class="unchek"  type="checkbox" (change)="onChangeTrend($event)"  formControlName="trend_status"><span class="switch-state"></span>
+
                       </label>
                     </div>
                   </div>
@@ -47,7 +47,8 @@
                   <div class="media">
                     <div class="media-body">
                       <label class="switch">
-                        <input type="checkbox" (change)="onChangePost($event)" value="1" formControlName="post_status"><span class="switch-state"></span>
+                        <input type="checkbox"  [ngModel]="article?.post_status"  (change)="onChangePost($event)" class="unchek" formControlName="post_status"><span class="switch-state"></span>
+
                       </label>
                     </div>
                   </div>
@@ -57,9 +58,18 @@
             </div>
             <input type="hidden" formControlName="main_image" [ngModel]="article?.main_image">
             <div class="col-md-6">
-              <div class="form-group">
-                <label for="image">Image</label>
-                <input id="image" (change)="main_image($event)" class="form-control" type="file" name="image">
+              <div class="row align-items-end">
+                <div class="col-lg-10">
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <input id="image" (change)="main_image($event)" class="form-control" type="file" name="image">
+                  </div>
+
+                </div>
+                <div class="col-lg-2">
+                  <img height="50px" class="w-100 mb-2" [src]="articleImage+article?.main_image" alt="">
+
+                </div>
               </div>
 
             </div>

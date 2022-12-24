@@ -12,43 +12,40 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header no-gutters row bg-primary align-items-center">
-          <div class="col-md-2">
+          <div class="col-md-4">
             <h5>Articles</h5>
 
           </div>
-          <div class="col-md-10">
+          <div class="col-md-8">
             <div class="row justify-content-center">
-              <div class="col-lg-8 mb-md-2 col-md-12">
-                <form [formGroup]="filter" (ngSubmit)="onSubmit()">
-                  <div class="date-filter row  justify-content-center align-items-end">
+              <div class="col-lg-7 mb-md-2 col-md-12">
+                <form [formGroup]="filter" (ngSubmit)="onSubmit(filter)">
 
-                      <div class="col-md-5 col-6">
-                        <div class="form-group d-flex align-items-center mb-0">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <input type="text"
+                      formControlName="date1"
+                      placeholder="Daterangepicker"
+                      class="form-control"
+                      #drp="bsDaterangepicker" bsDaterangepicker
+                      [maxDate]="maxDate"
+                      [(ngModel)]="bsRangeValue">
 
-                          <label for="date1" class="mr-1 date1 mb-0">From</label>
-                          <input type="date" class="form-control" formControlName="date1" id="date1">
-                        </div>
-                      </div>
-
-                      <div class="col-md-5 col-6">
-                        <div class="form-group d-flex align-items-center mb-0">
-
-                          <label for="date2" class="mr-1 date2 mb-0">To</label>
-                          <input [max]="today" type="date" class="form-control" formControlName="date2" id="date2">
-                        </div>
-                      </div>
-                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-4">
                       <div class="form-group mb-0">
 
-                        <button class="btn btn-light btn-submit w-100 d-flex align-items-center justify-content-center h-100"
-                          style="padding:10px ;" [disabled]="filter.invalid" type="submit"><i class="fa fa-filter"
-                            aria-hidden="true"></i></button>
+                        <button class="btn btn-white h-38px btn-submit d-flex justify-content-center align-items-center w-100" [disabled]="filter.invalid" type="submit"><i class="fa fa-filter"
+                          aria-hidden="true"></i></button>
                       </div>
+
                     </div>
                   </div>
-                </form>
+
+
+              </form>
               </div>
-              <div class="col-lg-3 col-md-6 mb-2">
+              <div class="col-lg-4 col-md-6 mb-2">
 
 
                 <select type="text" (change)="onChange($event)" name="" id="" class="form-control">

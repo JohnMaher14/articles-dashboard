@@ -3,6 +3,7 @@ import { FormGroup, FormControl , Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-article',
@@ -18,7 +19,7 @@ export class EditArticleComponent implements OnInit {
   ckeConfig:any;
   article:any;
   username:any;
-
+  articleImage: string = `${environment.imageUrl}posts/`;
   loading: boolean = false;
   loadingAction: boolean = false;
   constructor(
@@ -44,6 +45,7 @@ export class EditArticleComponent implements OnInit {
     this._ArticleService.getArticleDeatils(this.indexForNumbers).subscribe(
       (response) => {
         this.article = response.row
+        console.log(this.article);
         console.log(response);
       }
     )
@@ -61,6 +63,14 @@ export class EditArticleComponent implements OnInit {
     this._CategoryService.getAllCategory().subscribe(
       (response) => {
         this.categories = response.rows
+        const categoryArray = response.rows.filter(
+          (category: any) => {
+            console.log(category);
+            // return category =\
+            console.log(this.article.category_id)
+          }
+        )
+        console.log(categoryArray);
       }
     )
 
@@ -123,9 +133,7 @@ export class EditArticleComponent implements OnInit {
   ngOnInit(): void {
     this.showCategories();
     this.getDetails();
-    this.updateArticle.get('trend_status')?.setValue(0)
-    this.updateArticle.get('news_status')?.setValue(0)
-    this.updateArticle.get('post_status')?.setValue(0)
+
     this.ckeConfig = {
       extraPlugins:
         "easyimage,dialogui,dialog,a11yhelp,about,basicstyles,bidi,blockquote,clipboard," +
